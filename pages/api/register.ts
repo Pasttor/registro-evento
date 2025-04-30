@@ -70,7 +70,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // 4) Enviar email de confirmación
     await resend.emails.send({
-      from: 'no-reply@' + new URL(process.env.NEXT_PUBLIC_VERCEL_URL!).host,
+      from: `no-reply@${process.env.RESEND_SENDER_DOMAIN!}`,
       to: [body.email],
       subject: 'Confirmación de tu registro al evento',
       html: `
